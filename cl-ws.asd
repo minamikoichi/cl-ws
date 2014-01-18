@@ -12,9 +12,9 @@
 	       (:file "packages")
 	       (:file "config")
 	       (:file "service-op")
-	       (:file "server")
+	       (:file "server"))
 ;		 (:file "acceptor")
-	       (:file "markup-template-file"))
+;	       (:file "markup-template-file"))
   :depends-on (:skip
 	       :hu.dwim.defclass-star
 	       :cl-markup))
