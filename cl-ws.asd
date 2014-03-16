@@ -11,6 +11,7 @@
   :components ((:static-file "cl-ws.asd")
 	       (:file "packages")
 	       (:file "config")
+	       (:file "frontend")
 	       (:file "service-op")
 	       (:file "server"))
 ;		 (:file "acceptor")

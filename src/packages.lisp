@@ -26,8 +26,13 @@
 	   :service-of
 	   :name-of
 	   :log-path-of
+	   :<frontend>
+	   :instance-of
+	   :config-of
 	   :launch-instance
+	   :stop-instance
 	   :load-service
+	   :shutdown-service
 	   ))
   ;; 	   :setroutes
   ;; 	   :launch-instance

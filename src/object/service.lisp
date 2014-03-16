@@ -70,8 +70,8 @@
 (defgeneric setup-db (<service> &key name scheme type))
 
 (defmethod cleanup-dbs ((service <service>))
-  (maphash (^ (key val) (cleanup-db service key)) (dbs-of service)))
-(defgeneric cleanup-db (<service> name))
+  (maphash (^ (key val) (cleanup-db service :name key)) (dbs-of service)))
+(defgeneric cleanup-db (<service> &key name))
 
 (defmethod get-db ((service <service>) &key name)
   (gethash name (dbs-of service)))
@@ -104,5 +104,5 @@
 (defmethod boot :before ((service <service>))
   (setup-dbs service))
 
-(defmethod shutdown :after (<service>)
+(defmethod shutdown :after ((service <service>))
   (cleanup-dbs service))

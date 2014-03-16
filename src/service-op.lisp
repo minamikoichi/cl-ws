@@ -14,9 +14,11 @@
 (defmacro constr (&rest rest) `(concatenate 'string ,@rest))
 
 (defun load-service (name &key (service-dir *service-root*))
-  (format t "log ~a ~%" name)
-;  (asdf:oos 'asdf:load-op name)
-;  (use-package (intern (string-upcase name) (string-upcase name)))
   (skip:whenbind service (make-service name)
     (boot service)
     (register-service name service)))
+
+(defun shutdown-service (name &key (service-dir *service-root*))
+  (skip:whenbind service (find-service name)
+    (shutdown service)
+    (unregister-service name)))

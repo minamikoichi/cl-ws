@@ -1,10 +1,16 @@
 (in-package :cl-ws)
 
 (defgeneric launch-instance (<frontend-config>))
+(defgeneric stop-instance (<frontend>))
 
 (defmethod launch-instance :after ((frontend-config <frontend-config>))
-  (format t "launch-instance ~%")
+  (format t "launch-instance ~a ~%" (name-of frontend-config))
   (map nil #'(lambda (s) (load-service s)) (service-of frontend-config)))
+
+(defmethod stop-instance :after  ((frontend <frontend>))
+  (let ((config (config-of frontend)))
+    (format t "stop-instance ~a ~%" (name-of config))
+    (map nil #'(lambda (s) (shutdown-service s)) (service-of config))))
 
 ;(defgeneric launch-instance :after (<frontend-config>))
 

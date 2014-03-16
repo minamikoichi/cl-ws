@@ -12,6 +12,7 @@
 		 (:file "wookie"))
     :depends-on (:skip
 		 :hu.dwim.defclass-star
+		 :bordeaux-threads
 		 :cl-ws
 		 :wookie))
 
