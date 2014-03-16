@@ -18,6 +18,7 @@
 	 ;; lock our ASDF ops!!
 	 (bt:with-lock-held (*plugin-lock*)
 	   (load-plugins))
+	 (map nil #'(lambda (s) (load-service s)) (cl-ws:service-of frontend-config))
 	 (as:with-event-loop (:catch-app-errors t)
 	   ;; create a listener object, and pass it to start-server, which starts Wookie
 	   (let* ((listener (make-instance 'wookie:listener
@@ -26,7 +27,6 @@
 	    ;; start it!!
 	     (setf (instance-of frontend) (start-server listener))
 	     (setf (config-of frontend)   frontend-config))))))
-;	    (map nil #'(lambda (s) (load-service s)) (cl-ws:service-of frontend-config))
 	    ;; stop server on ctrl+c
 ;	    (as:signal-handler 2 
 ;			       (lambda (sig)
