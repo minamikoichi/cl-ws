@@ -1,5 +1,2 @@
-# compile
-make compile
-
-# publish 
-make push
+# cl-ws
+web-service-template backend library.
